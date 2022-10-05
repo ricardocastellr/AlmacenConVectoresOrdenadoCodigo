@@ -43,10 +43,20 @@ class Inventario{
         }
     }
 
-    buscar(codigo){
-        for(let i=0; i<this.productos.length ;i++){
-            if(this.productos[i].codigo == codigo)
-                return this.productos[i];
+    buscar(elemento){
+        let inicio = 0;
+        let final = this.productos.length - 1;
+          
+        while (inicio <= final) {
+            let mitad = Math.floor((inicio + final) / 2);
+          
+            if (this.productos[mitad].codigo < elemento) {
+                inicio = mitad + 1;
+            } else if (this.productos[mitad].codigo > elemento) {
+                final = mitad - 1;
+            } else if (this.productos[mitad].codigo === elemento) {
+                return this.productos[mitad];
+            }
         }
         return null;
     }
