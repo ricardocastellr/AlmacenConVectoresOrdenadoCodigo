@@ -15,7 +15,8 @@ agregar.addEventListener("click",(e)=>{
     else
         document.getElementById("listado").innerHTML =
         `<h3>El código del producto ya existe en el inventario o no ingresó un código.</h3>`;
-        
+    
+
     e.preventDefault(); //Cancela el evento.
 });
 
@@ -49,11 +50,13 @@ eliminar.addEventListener("click", (e) => {
     const producto = miInv.eliminar(document.getElementById("delCodigo").value);
     document.getElementById("delCodigo").value = ``;
     if(producto == true)
-        alert("El producto se eliminó con exito.");
+        document.getElementById("listado").innerHTML =
+        `<h3>El producto se eliminó con exito.</h3>`;
     else 
-        alert("El producto que desea eliminar no existe.");
+        document.getElementById("listado").innerHTML =
+        `<h3>El producto que desea eliminar no existe.</h3>`;
 
-    document.getElementById("listado").innerHTML = ``;
+
     e.preventDefault(); //Cancela el evento.
 });
 
@@ -64,9 +67,9 @@ buscar.addEventListener("click", (e) => {
     document.getElementById("busCodigo").value = ``;
     if(producto != null)
         return `${producto.informacionProducto()}`;
-    else{
-        document.getElementById("listado").innerHTML = ``;
-        alert("El producto que desea buscar no existe.");
-    }
+    else
+        document.getElementById("listado").innerHTML = 
+        `<h3>El producto que desea buscar no existe.</h3>`;
+    
     e.preventDefault(); //Cancela el evento.
 });
