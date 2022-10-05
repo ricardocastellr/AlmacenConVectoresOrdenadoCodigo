@@ -43,21 +43,21 @@ class Inventario{
         }
     }
 
-    buscar(elemento){
-        let inicio = 0;
-        let final = this.productos.length - 1;
-          
-        while (inicio <= final) {
-            let mitad = Math.floor((inicio + final) / 2);
-          
-            if (this.productos[mitad].codigo < elemento) {
-                inicio = mitad + 1;
-            } else if (this.productos[mitad].codigo > elemento) {
-                final = mitad - 1;
-            } else if (this.productos[mitad].codigo === elemento) {
-                return this.productos[mitad];
-            }
+    buscar(codigo){
+        let sup = 0;
+        let inf = this.productos.length - 1;
+        
+        for(let i=0; sup <= inf; i++){
+            let centro = Math.floor((sup + inf) / 2);
+
+            if (this.productos[centro].codigo < codigo) 
+                sup = centro + 1;
+            else if (this.productos[centro].codigo > codigo) 
+                inf = centro - 1;
+            else if (this.productos[centro].codigo === codigo)
+                return this.productos[centro];   
         }
+
         return null;
     }
 
