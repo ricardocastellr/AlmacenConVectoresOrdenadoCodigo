@@ -21,7 +21,7 @@ class Inventario{
     }
 
     agregar(producto){
-        if(this.buscar(producto.codigo) == null){
+        if(this.buscar(producto.codigo) == null && producto.codigo.length != 0){
             this.productos.push(producto);
             return true;
         }else

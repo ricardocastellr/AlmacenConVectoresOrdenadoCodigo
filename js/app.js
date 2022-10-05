@@ -10,11 +10,12 @@ agregar.addEventListener("click",(e)=>{
     
     const producto = new Producto(codigo, nombre, cantidad, costo);
     if(miInv.agregar(producto))
-        alert("Producto agregado de manera exitosa.");
+        document.getElementById("listado").innerHTML =
+        `<h3>Producto agregado de manera exitosa.</h3>`;
     else
-        alert("El código del producto ya existe en el inventario.");
+        document.getElementById("listado").innerHTML =
+        `<h3>El código del producto ya existe en el inventario o no ingresó un código.</h3>`;
         
-    document.getElementById("listado").innerHTML = ``;
     e.preventDefault(); //Cancela el evento.
 });
 
