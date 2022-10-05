@@ -25,7 +25,8 @@ listar.addEventListener("click", (e) => {
     if(miInv.listar())
         document.getElementById("listado").innerHTML = `${miInv.listar()}`;
     else
-        alert("No hay productos en el almacen.");
+        document.getElementById("listado").innerHTML =
+        `<h3>No hay productos en el almacen.</h3>`;
 
     e.preventDefault(); //Cancela el evento.
 });
@@ -36,7 +37,8 @@ listarInverso.addEventListener("click", (e) => {
     if(miInv.listarInverso())
         document.getElementById("listado").innerHTML = `${miInv.listarInverso()}`;
     else
-        alert("No hay productos en el almacen.");
+        document.getElementById("listado").innerHTML =
+        `<h3>No hay productos en el almacen.</h3>`;
         
     e.preventDefault(); //Cancela el evento.
 });
