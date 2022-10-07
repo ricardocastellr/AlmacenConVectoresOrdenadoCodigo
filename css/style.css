@@ -19,11 +19,7 @@ body{
     border: 3px solid #213dad;
     padding: .5%;
 }
-footer{
-    font-size: 20px;
-    margin-top: 40%;
-}
-#text_listado{
+#text_header{
     margin-right: 23%;
     border-bottom: 3px solid #213dad;
 }

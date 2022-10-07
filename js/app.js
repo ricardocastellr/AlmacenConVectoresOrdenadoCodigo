@@ -10,10 +10,10 @@ agregar.addEventListener("click",(e)=>{
     
     const producto = new Producto(codigo, nombre, cantidad, costo);
     if(miInv.agregar(producto))
-        document.getElementById("listado").innerHTML =
+        document.getElementById("acciones").innerHTML +=
         `<h3>Producto agregado de manera exitosa.</h3>`;
     else
-        document.getElementById("listado").innerHTML =
+        document.getElementById("acciones").innerHTML +=
         `<h3>El código del producto ya existe en el inventario o no ingresó un código.</h3>`;
     
 
@@ -26,7 +26,7 @@ listar.addEventListener("click", (e) => {
     if(miInv.listar())
         document.getElementById("listado").innerHTML = `${miInv.listar()}`;
     else
-        document.getElementById("listado").innerHTML =
+        document.getElementById("acciones").innerHTML +=
         `<h3>No hay productos en el almacen.</h3>`;
 
     e.preventDefault(); //Cancela el evento.
@@ -38,7 +38,7 @@ listarInverso.addEventListener("click", (e) => {
     if(miInv.listarInverso())
         document.getElementById("listado").innerHTML = `${miInv.listarInverso()}`;
     else
-        document.getElementById("listado").innerHTML =
+        document.getElementById("acciones").innerHTML +=
         `<h3>No hay productos en el almacen.</h3>`;
         
     e.preventDefault(); //Cancela el evento.
@@ -50,10 +50,10 @@ eliminar.addEventListener("click", (e) => {
     const producto = miInv.eliminar(document.getElementById("delCodigo").value);
     document.getElementById("delCodigo").value = ``;
     if(producto == true)
-        document.getElementById("listado").innerHTML =
+        document.getElementById("acciones").innerHTML +=
         `<h3>El producto se eliminó con exito.</h3>`;
     else 
-        document.getElementById("listado").innerHTML =
+        document.getElementById("acciones").innerHTML +=
         `<h3>El producto que desea eliminar no existe.</h3>`;
 
 
@@ -68,7 +68,7 @@ buscar.addEventListener("click", (e) => {
     if(producto != null)
         return `${producto.informacionProductoHTML()}`;
     else
-        document.getElementById("listado").innerHTML = 
+        document.getElementById("acciones").innerHTML += 
         `<h3>El producto que desea buscar no existe.</h3>`;
     
     e.preventDefault(); //Cancela el evento.
