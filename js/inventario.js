@@ -20,12 +20,24 @@ class Producto{
 
 class Inventario{
     constructor(){
-        this.productos= new Array();
+        this.productos = [];
     }
 
     agregar(producto){
         if(this.buscar(producto.codigo) == null && producto.codigo.length != 0){
             this.productos[this.productos.length] = producto;
+            console.log(this.productos.length)
+            for(let i=1; i < this.productos.length ;i++){
+                const swap = this.productos[i].codigo;
+                const aux = this.productos[i];
+                let j = i - 1;
+
+                while(j >= 0 && Number(this.productos[j].codigo) > Number(swap)){
+                    this.productos[j+1] = this.productos[j];
+                    j--;
+                }
+                this.productos[j+1] = aux;
+            }
             return true;
         }else
             return false;
