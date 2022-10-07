@@ -66,7 +66,7 @@ buscar.addEventListener("click", (e) => {
     const producto = miInv.buscar(document.getElementById("busCodigo").value);
     document.getElementById("busCodigo").value = ``;
     if(producto != null)
-        return `${producto.informacionProducto()}`;
+        return `${producto.informacionProductoHTML()}`;
     else
         document.getElementById("listado").innerHTML = 
         `<h3>El producto que desea buscar no existe.</h3>`;

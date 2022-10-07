@@ -5,13 +5,16 @@ class Producto{
         this.cantidad = cantidad;
         this.costo = costo;
     }
-    informacionProducto(){
+    informacionProductoHTML(){
         return document.getElementById("listado").innerHTML = 
         `<h3>CÓDIGO: ${this.codigo}.</h3>
         <h4>Nombre: ${this.nombre}.<br>
         Cantidad: ${this.cantidad}.<br>
         Costo: $${this.costo}.</h4>
         <p>-----------------------------------------</p>`;
+    }
+    informacionProducto(){
+        return `${this.codigo} - ${this.nombre} - ${this.cantidad} - ${this.costo}`
     }
 }
 
@@ -22,7 +25,7 @@ class Inventario{
 
     agregar(producto){
         if(this.buscar(producto.codigo) == null && producto.codigo.length != 0){
-            this.productos.push(producto);
+            this.productos[this.productos.length] = producto;
             return true;
         }else
             return false;
@@ -47,7 +50,7 @@ class Inventario{
         let sup = 0;
         let inf = this.productos.length - 1;
         
-        for(let i=0; sup <= inf; i++){
+        while(sup <= inf){
             let centro = Math.floor((sup + inf) / 2);
 
             if (this.productos[centro].codigo < codigo) 
@@ -65,7 +68,7 @@ class Inventario{
         let productos = "";
         if(this.productos.length>0){
             for(let i=0; i<this.productos.length ;i++)
-                productos += this.productos[i].informacionProducto();
+                productos += this.productos[i].informacionProductoHTML();
         }else 
             return false;
         
@@ -76,7 +79,7 @@ class Inventario{
         let productos = "";
         if(this.productos.length>0){
             for(let i=this.productos.length-1; i>=0 ;i--)
-                productos += this.productos[i].informacionProducto();
+                productos += this.productos[i].informacionProductoHTML();
         }else 
             return false;
 
