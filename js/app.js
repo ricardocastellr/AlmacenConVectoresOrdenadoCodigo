@@ -7,6 +7,11 @@ agregar.addEventListener("click",(e)=>{
     const nombre = document.getElementById("nombre").value;
     const cantidad = document.getElementById("cantidad").value;
     const costo = document.getElementById("costo").value;
+
+    document.getElementById("codigo").value = ``;
+    document.getElementById("nombre").value = ``;
+    document.getElementById("cantidad").value = ``;
+    document.getElementById("costo").value = ``;
     
     const producto = new Producto(codigo, nombre, cantidad, costo);
     if(miInv.agregar(producto))
@@ -49,12 +54,16 @@ const eliminar = document.getElementById("btnEliminar")
 eliminar.addEventListener("click", (e) => {
     const producto = miInv.eliminar(document.getElementById("delCodigo").value);
     document.getElementById("delCodigo").value = ``;
-    if(producto == true)
+    if(producto == true){
         document.getElementById("acciones").innerHTML +=
         `<h3>El producto se eliminó con exito.</h3>`;
-    else 
+        document.getElementById("listado").innerHTML = ``;
+    }
+    else{
         document.getElementById("acciones").innerHTML +=
         `<h3>El producto que desea eliminar no existe.</h3>`;
+        document.getElementById("listado").innerHTML = ``;
+    }
 
 
     e.preventDefault(); //Cancela el evento.
@@ -65,11 +74,15 @@ const buscar = document.getElementById("btnBuscar")
 buscar.addEventListener("click", (e) => {
     const producto = miInv.buscar(document.getElementById("busCodigo").value);
     document.getElementById("busCodigo").value = ``;
-    if(producto != null)
+    if(producto != null){
+        document.getElementById("acciones").innerHTML += 
+        `<h3>El producto se encontró con exito.</h3>`;
         return `${producto.informacionProductoHTML()}`;
-    else
+    }
+    else{
         document.getElementById("acciones").innerHTML += 
         `<h3>El producto que desea buscar no existe.</h3>`;
-    
+        document.getElementById("listado").innerHTML = ``;
+    }
     e.preventDefault(); //Cancela el evento.
 });
