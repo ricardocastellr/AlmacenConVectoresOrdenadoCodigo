@@ -28,11 +28,11 @@ class Inventario{
             this.productos[this.productos.length] = producto;
             console.log(this.productos.length)
             for(let i=1; i < this.productos.length ;i++){
-                const swap = this.productos[i].codigo;
+                const swap = Number(this.productos[i].codigo);
                 const aux = this.productos[i];
                 let j = i - 1;
 
-                while(j >= 0 && Number(this.productos[j].codigo) > Number(swap)){
+                while(j >= 0 && Number(this.productos[j].codigo) > swap){
                     this.productos[j+1] = this.productos[j];
                     j--;
                 }
@@ -47,17 +47,6 @@ class Inventario{
         if(this.buscar(codigo) == null)
             return false;
         else{
-            for(let i=0; i < this.productos.length ;i++){
-                const swap = this.productos[i].codigo;
-                const aux = this.productos[i];
-                let j = i - 1;
-
-                while(j >= 0 && Number(codigo) == Number(this.productos[i].codigo)){
-                    this.productos[j+1] = this.productos[j];
-                    j--;
-                }
-                this.productos[j+1] = aux;
-            }
             for(let i=0; i<this.productos.length ;i++){
                 if(codigo == this.productos[i].codigo){
                     for(let j=i; j<this.productos.length-1 ;j++)
