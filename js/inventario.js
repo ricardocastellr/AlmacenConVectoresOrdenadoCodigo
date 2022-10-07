@@ -47,6 +47,17 @@ class Inventario{
         if(this.buscar(codigo) == null)
             return false;
         else{
+            for(let i=0; i < this.productos.length ;i++){
+                const swap = this.productos[i].codigo;
+                const aux = this.productos[i];
+                let j = i - 1;
+
+                while(j >= 0 && Number(codigo) == Number(this.productos[i].codigo)){
+                    this.productos[j+1] = this.productos[j];
+                    j--;
+                }
+                this.productos[j+1] = aux;
+            }
             for(let i=0; i<this.productos.length ;i++){
                 if(codigo == this.productos[i].codigo){
                     for(let j=i; j<this.productos.length-1 ;j++)
@@ -59,17 +70,19 @@ class Inventario{
     }
 
     buscar(codigo){
+        codigo = Number(codigo);
         let sup = 0;
         let inf = this.productos.length - 1;
         
         while(sup <= inf){
             let centro = Math.floor((sup + inf) / 2);
+            let codigoCentro = Number(this.productos[centro].codigo);
 
-            if (this.productos[centro].codigo < codigo) 
+            if (Number(codigoCentro) < codigo) 
                 sup = centro + 1;
-            else if (this.productos[centro].codigo > codigo) 
+            else if (Number(codigoCentro) > codigo) 
                 inf = centro - 1;
-            else if (this.productos[centro].codigo === codigo)
+            else if (Number(codigoCentro) === codigo)
                 return this.productos[centro];   
         }
 
