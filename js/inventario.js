@@ -4,23 +4,17 @@ class Inventario{
     }
 
     agregar(producto){
-
-        let l = this.productos.length;
-        if(l == 0){
-            console.log("asd")
+        let l = this.productos.length
+        if (l==0){
             this.productos[l] = producto;
             return true;
         }
-        if(this.buscar(producto.codigo) == null && producto.codigo.length != 0){
-            const swap = Number(this.productos[i].codigo);
-            const aux = this.productos[i];
-            while(l >= 0 && Number(this.productos[l-1].codigo) > swap){
-                this.productos[l] = this.productos[l-1];
+        if(this.buscar(producto.codigo) == null && this.productos.length>0){
+            while (this.productos[l-1] != null && producto.codigo < Number(this.productos[l-1].codigo)){
+                this.productos[l]= this.productos[l-1];
                 l--;
-                swap++;
-                aux++;
             }
-            this.productos[l] = aux;
+            this.productos[l] = producto;
             return true;
         }else{
             return false;
